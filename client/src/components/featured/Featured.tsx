@@ -12,12 +12,13 @@ const Featured = () => {
             <img src={Culture}></img>
           </div>
           <div className={styles.textContainer}>
-            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+            <h3> Vibrant Travel Escapes</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-              atque modi cum eius delectus quisquam nam nisi iusto, repudiandae
-              facere fuga repellat velit dolorem voluptate nostrum voluptatum.
-              At, provident tempore.
+              Our first stop takes us off the beaten path, uncovering hidden
+              gems that are often overlooked by traditional travel guides. From
+              quaint villages nestled in the mountains to vibrant street markets
+              teeming with local life, these destinations promise an authentic
+              and enriching travel experience.
             </p>
           </div>
         </div>

@@ -30,6 +30,7 @@
 .textContainer p {
     color: var(--navText);
     font-size: 21px;
+    letter-spacing: 0.1rem  ;
 }
 
 @media screen and (max-width: 1190px) {
