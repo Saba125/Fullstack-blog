@@ -5,12 +5,23 @@ import Instagram from "@/assets/instagram.png";
 import { Link } from "react-router-dom";
 import { BiAlignLeft } from "react-icons/bi";
 import { useState } from "react";
+type User = {
+  username: string,
+}
 const NavBar = () => {
   const [menuVisible, setMenuVisible] = useState(false);
   const toggleMenu = () => {
     setMenuVisible(prev => !prev);
   };
-  return (
+  const storedUser = localStorage.getItem("user");
+  let userData: User | null = null
+  try {
+    userData = storedUser !== null ? JSON.parse(storedUser) : null;
+    console.log(userData)
+  } catch (error) {
+    console.error("Error parsing stored user data:", error);
+  }
+    return (
     <div className="container">
       <div className={styles.wrapper}>
         <div className={styles.socials}>
@@ -18,7 +29,7 @@ const NavBar = () => {
           <img src={Instagram} alt="tiktok" />
           <img src={Tiktok} alt="tiktok" />
         </div>
-        <h3 className={styles.title}>JeBlog</h3>
+        <Link to='/' className={styles.title}>JeBlog</Link>
         {/* Links */}
         <ul
           className={`${styles.links} ${
@@ -36,6 +47,9 @@ const NavBar = () => {
           </Link>
           <Link className={styles.link} to="/">
             Contact
+          </Link>
+          <Link className={styles.link} to="/">
+            {userData ? "Sign out" : <Link to='/login'>Sign in</Link> }
           </Link>
         </ul>
         <div className={styles.burger}>

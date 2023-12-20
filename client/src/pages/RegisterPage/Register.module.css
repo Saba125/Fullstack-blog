@@ -3,58 +3,68 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
-.title {
+  }
+  .title {
     color: var(--navText);
     font-size: 32px;
     margin-bottom: 10px;
-}
-.box {
+  }
+  .box {
     width: 400px;
-    height: 250px;
+    height: 270px;
     border: 2px solid gray;
     border-radius: 12px;
     padding: 15px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-input {
+  }
+  input {
     width: 300px;
-}
-.form {
+  }
+  .form {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 17px;
-}
-.form input {
+  }
+  .form input {
     border: 2px solid gray;
     background-color: transparent;
     border-radius: 12px;
     padding: 10px 10px;
     color: white;
     font-size: 18px;
-}
-label {
+  }
+  label {
     color: var(--navText);
     display: block;
     margin-bottom: 5px;
-}
-.button {
+  }
+  .button {
     width: 100%;
     display: flex;
     justify-content: center;
-}
-button {
+  }
+  button {
     width: 100%;
     outline: none;
     border: 0;
-    background-color: #1161EEFF;
+    background-color: #1161eeff;
     border-radius: 15px;
     padding: 10px;
     cursor: pointer;
     color: var(--navText);
     font-size: 18px;
     font-weight: bold;
-}
+  }
+  .footer {
+    display: flex;
+    gap: 6px;
+    color: var(--navText);
+    text-transform: capitalize;
+  }
+  .footer a {
+    text-decoration: underline;
+    color: #1161eeff;
+  }
