@@ -2,11 +2,12 @@ import styles from '@/pages/LoginPage/LoginPage.module.css'
 import { FormEvent, useState } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
-
+import {useNavigate} from 'react-router-dom'
 const LoginPage = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
+  const [error, setError] = useState<null | string>(null)
+  const navigate = useNavigate()
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
@@ -15,9 +16,10 @@ const LoginPage = () => {
       });
       const data = res.data
       localStorage.setItem("user", JSON.stringify(data))
-      console.log(data)
+      navigate("/")
     } catch (error) {
       console.log("Could not login" + error);
+      setError("Username or password incorrect")
     }
   };
 
@@ -49,7 +51,7 @@ const LoginPage = () => {
             <div className={styles.footer}>
               First time here?
               <Link to='/register'>Click here to sign up</Link>
-
+              {error}
             </div>
           </form>
         </div>

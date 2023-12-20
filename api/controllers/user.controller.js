@@ -1,6 +1,6 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
-import jwt from 'jsonwebtoken'
+import jwt from "jsonwebtoken";
 export const registerUser = async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hashSync(req.body.password, 5);
@@ -24,10 +24,18 @@ export const loginUser = async (req, res) => {
     if (!isCorrect) {
       return res.status(400).send("Invalid password or username");
     }
-    const token = jwt.sign({id: user.id}, process.env.JWT_KEY)
+    const token = jwt.sign({ id: user.id }, process.env.JWT_KEY);
     const { password, ...info } = user._doc;
-    res.cookie("accessToken", token, {httpOnly: true}).send(info);
+    res.cookie("accessToken", token, { httpOnly: true }).send(info);
   } catch (error) {
     res.status(500).send(`Could not login ${error.message}`);
+  }
+};
+export const logOut = (req, res) => {
+  try {
+    res.clearCookie("accessToken");
+    res.status(200).send("Logout successful");
+  } catch (error) {
+    res.status(500).send("Could not logout", error.message);
   }
 };

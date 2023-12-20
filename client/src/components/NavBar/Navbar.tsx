@@ -2,26 +2,37 @@ import styles from "./Navbar.module.css";
 import Facebook from "@/assets/facebook.png";
 import Tiktok from "@/assets/tiktok.png";
 import Instagram from "@/assets/instagram.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BiAlignLeft } from "react-icons/bi";
 import { useState } from "react";
+import axios from "axios";
 type User = {
-  username: string,
-}
+  username: string;
+};
 const NavBar = () => {
   const [menuVisible, setMenuVisible] = useState(false);
   const toggleMenu = () => {
-    setMenuVisible(prev => !prev);
+    setMenuVisible((prev) => !prev);
   };
   const storedUser = localStorage.getItem("user");
-  let userData: User | null = null
+  let userData: User | null = null;
+  const navigate = useNavigate()
   try {
     userData = storedUser !== null ? JSON.parse(storedUser) : null;
-    console.log(userData)
+    console.log(userData);
   } catch (error) {
     console.error("Error parsing stored user data:", error);
   }
-    return (
+  const handleLogOut = async () => {
+    try {
+      const res = await axios.post("http://localhost:8800/api/logout")
+      const user = localStorage.setItem("user", JSON.stringify(null))
+      navigate("/login")
+    } catch (error) {
+      console.log("Error logging out")
+    }
+  };
+  return (
     <div className="container">
       <div className={styles.wrapper}>
         <div className={styles.socials}>
@@ -29,7 +40,9 @@ const NavBar = () => {
           <img src={Instagram} alt="tiktok" />
           <img src={Tiktok} alt="tiktok" />
         </div>
-        <Link to='/' className={styles.title}>JeBlog</Link>
+        <Link to="/" className={styles.title}>
+          JeBlog
+        </Link>
         {/* Links */}
         <ul
           className={`${styles.links} ${
@@ -49,7 +62,11 @@ const NavBar = () => {
             Contact
           </Link>
           <Link className={styles.link} to="/">
-            {userData ? "Sign out" : <Link to='/login'>Sign in</Link> }
+            {userData ? (
+              <h3 onClick={handleLogOut}>Sign out</h3>
+            ) : (
+              <Link to="/login">Sign in</Link>
+            )}
           </Link>
         </ul>
         <div className={styles.burger}>

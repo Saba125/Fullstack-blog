@@ -64,7 +64,7 @@
     color: var(--navText);
     text-transform: capitalize;
   }
-  .footer a {
+  .footer  a {
     text-decoration: underline;
     color: #1161eeff;
   }
