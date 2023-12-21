@@ -2,8 +2,10 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import userRouter from "./routes/user.route.js";
+import CategoryRouter from './routes/categories.route.js'
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import categoriesModel from "./models/categories.model.js";
 const app = express();
 dotenv.config();
 app.use(express.json());
@@ -22,3 +24,4 @@ app.listen(process.env.PORT, () => {
   console.log(`Api is listening on ${process.env.PORT}`);
 });
 app.use("/api", userRouter);
+app.use("/api", CategoryRouter)
