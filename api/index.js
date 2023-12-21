@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import userRouter from "./routes/user.route.js";
 import CategoryRouter from './routes/categories.route.js'
+import BlogRouter from './routes/blog.route.js'
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import categoriesModel from "./models/categories.model.js";
@@ -25,3 +26,4 @@ app.listen(process.env.PORT, () => {
 });
 app.use("/api", userRouter);
 app.use("/api", CategoryRouter)
+app.use("/api", BlogRouter )

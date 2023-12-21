@@ -20,6 +20,7 @@ const Featured = () => {
               teeming with local life, these destinations promise an authentic
               and enriching travel experience.
             </p>
+            <button className="btn">Read more...</button>
           </div>
         </div>
       </div>

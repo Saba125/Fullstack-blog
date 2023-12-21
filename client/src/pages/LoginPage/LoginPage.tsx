@@ -1,30 +1,40 @@
-import styles from '@/pages/LoginPage/LoginPage.module.css'
+import styles from "@/pages/LoginPage/LoginPage.module.css";
 import { FormEvent, useState } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
-import {useNavigate} from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Toaster, toast } from "sonner";
 const LoginPage = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState<null | string>(null)
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8800/api/login", { username, password }, {
-        withCredentials: true
-      });
-      const data = res.data
-      localStorage.setItem("user", JSON.stringify(data))
-      navigate("/")
+      const res = await axios.post(
+        "http://localhost:8800/api/login",
+        { username, password },
+        {
+          withCredentials: true,
+        }
+      );
+      const data = res.data;
+      localStorage.setItem("user", JSON.stringify(data));
+      navigate("/");
     } catch (error) {
-      console.log("Could not login" + error);
-      setError("Username or password incorrect")
+      toast.error("Username or password is incorrect")
     }
   };
 
   return (
     <div className="container">
+      <Toaster
+        duration={3000}
+        visibleToasts={1}
+        expand={false}
+        richColors
+        position="bottom-right"
+      />
       <div className={styles.wrapper}>
         <h3 className={styles.title}>Sign in here </h3>
         <div className={styles.box}>
@@ -42,7 +52,7 @@ const LoginPage = () => {
               <input
                 type="password"
                 placeholder="Enter password here"
-                onChange={e => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className={styles.button}>
@@ -50,8 +60,7 @@ const LoginPage = () => {
             </div>
             <div className={styles.footer}>
               First time here?
-              <Link to='/register'>Click here to sign up</Link>
-              {error}
+              <Link to="/register">Click here to sign up</Link>
             </div>
           </form>
         </div>
