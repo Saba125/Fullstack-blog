@@ -12,7 +12,7 @@ const SingleCat = ({ item }: SingleCatProps) => {
       to={`/categories/${item.catName}`}
     >
       <h3>{item.catName}</h3>
-      <img src={item.image} className={styles.categoryImg} alt="" />
+      <img src={item.image} className={styles.categoryImg} alt={item.catName} />
     </Link>
   );
 };

@@ -9,7 +9,7 @@ const Featured = () => {
         </h3>
         <div className={styles.content}>
           <div className={styles.imgContainer}>
-            <img src={Culture}></img>
+            <img alt="culture" src={Culture}></img>
           </div>
           <div className={styles.textContainer}>
             <h3> Vibrant Travel Escapes</h3>
