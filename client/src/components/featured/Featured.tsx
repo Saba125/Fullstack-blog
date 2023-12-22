@@ -1,6 +1,16 @@
 import styles from "@/components/featured/Featured.module.css";
 import Culture from "@/assets/culture.png";
+import { useQuery } from "react-query";
+import { TBlog } from "@/types";
 const Featured = () => {
+  const { data, isError, isLoading } = useQuery<TBlog[]>("blogs", () =>
+    fetch("http://localhost:8800/api/blog", {
+      method: "GET",
+    }).then((res) => res.json())
+  );
+
+  const firstBlog = data && data[0];
+
   return (
     <div className="container">
       <div>
@@ -9,16 +19,17 @@ const Featured = () => {
         </h3>
         <div className={styles.content}>
           <div className={styles.imgContainer}>
-            <img alt="culture" src={Culture}></img>
+            <img src={Culture}></img>
           </div>
           <div className={styles.textContainer}>
-            <h3> Vibrant Travel Escapes</h3>
+            <h3>
+              {" "}
+              {firstBlog?.title ||
+                "            Lorem ipsum dolor sit amet consectetur adipisicing elit."}{" "}
+            </h3>
             <p>
-              Our first stop takes us off the beaten path, uncovering hidden
-              gems that are often overlooked by traditional travel guides. From
-              quaint villages nestled in the mountains to vibrant street markets
-              teeming with local life, these destinations promise an authentic
-              and enriching travel experience.
+              {firstBlog?.content ||
+                " Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariaturprovident error a accusantium iure nihil quo nobis odio fuga doloremincidunt fugiat maiores ea, deserunt atque nostrum itaque, essedolor."}
             </p>
             <button className="btn">Read more...</button>
           </div>

@@ -5,3 +5,9 @@
   justify-content: center;
   gap: 20px;
 }
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

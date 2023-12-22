@@ -11,6 +11,10 @@ export const registerUser = async (req, res) => {
     await newUser.save();
     res.status(200).send("User has been registered");
   } catch (error) {
+    if (error.name === "MongoError" && error.code === 11000) {
+      return res.status(400).send("Username is already taken. Please choose a different one.");
+    }
+
     return res.status(404).send(`Could not create user ${error.message}`);
   }
 };

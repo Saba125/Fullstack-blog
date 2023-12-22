@@ -20,3 +20,11 @@ export const getBlogByCat = async(req, res) => {
         res.status(404).send("Error has occurred: ")
     }
 }
+export const getAllBlog = async(req, res) => {
+  try {
+    const blogs = await Blog.find()
+    res.status(200).send(blogs)
+  } catch (error) {
+    res.status(404).send("Error has occurred")
+  }
+}

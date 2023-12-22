@@ -2,6 +2,7 @@ import styles from "@/pages/RegisterPage/Register.module.css";
 import { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Toaster, toast } from "sonner";
 const RegisterPage = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -10,12 +11,21 @@ const RegisterPage = () => {
     try {
       const res = await axios.post("http://localhost:8800/api/register", {username, password})
       console.log('User registered')
+      toast.success("User has registered successfully")
     } catch (error) {
       console.log("error registering" + error)
+      toast.error("Could not register user")
     }
   }
   return (
     <div className="container">
+       <Toaster
+        duration={3000}
+        visibleToasts={1}
+        expand={false}
+        richColors
+        position="bottom-right"
+      />
       <div className={styles.wrapper}>
         <h3 className={styles.title}>Sign up here </h3>
         <div className={styles.box}>
