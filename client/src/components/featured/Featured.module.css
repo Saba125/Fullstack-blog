@@ -31,9 +31,17 @@
   color: var(--navText);
   font-size: 21px;
 }
-.textContainer button {
+.textContainer a {
   width: fit-content;
   color: black;
+}
+.readMore {
+  margin-top: 15px;
+}
+.readMore a {
+  background-color: #fafafaff;
+  padding: 8px 8px;
+  border-radius: 6px;
 }
 @media screen and (max-width: 1190px) {
   .title {

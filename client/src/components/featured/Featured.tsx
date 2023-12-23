@@ -1,6 +1,7 @@
 import styles from "@/components/featured/Featured.module.css";
 import { useQuery } from "react-query";
 import { TBlog } from "@/types";
+import { Link } from "react-router-dom";
 const Featured = () => {
   const { data, isError, isLoading } = useQuery<TBlog[]>("blogs", () =>
     fetch("http://localhost:8800/api/blog", {
@@ -30,7 +31,9 @@ const Featured = () => {
               {firstBlog?.content ||
                 " Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariaturprovident error a accusantium iure nihil quo nobis odio fuga doloremincidunt fugiat maiores ea, deserunt atque nostrum itaque, essedolor."}
             </p>
-            <button className="btn">Read more...</button>
+            <div className={styles.readMore}>
+              <Link to={`/blog/${firstBlog?._id}`}>Read more...</Link>
+            </div>
           </div>
         </div>
       </div>

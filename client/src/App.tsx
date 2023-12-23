@@ -4,7 +4,6 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import NavBar from "./components/NavBar/Navbar";
 import {
   useQuery,
-  useMutation,
   useQueryClient,
   QueryClient,
   QueryClientProvider,
@@ -12,12 +11,13 @@ import {
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import CategoryPage from "./pages/CatPage/catPage";
 import { Suspense } from "react";
+import SinglePost from "./components/SinglePost/SinglePost";
+import PostPage from "./pages/SinglePost/PostPage";
 const queryClient = new QueryClient();
 function App() {
   return (
     <div>
       <QueryClientProvider client={queryClient}>
-
         <NavBar />
         <Suspense fallback={<div>Loading</div>}>
           <Routes>
@@ -28,6 +28,7 @@ function App() {
               path="/categories/:catName"
               element={<CategoryPage />}
             ></Route>
+            <Route path="/blog/:id" element={<PostPage />} />
           </Routes>
         </Suspense>
       </QueryClientProvider>

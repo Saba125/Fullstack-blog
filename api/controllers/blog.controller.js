@@ -32,6 +32,7 @@ export const getSingleBlog = async(req, res) => {
   try {
     const id = req.params.id
     const blogs = await Blog.findById(id)
+    res.status(200).send(blogs)
   } catch (error) {
     res.status(404).send("Could not fetch specific blog")
   }
