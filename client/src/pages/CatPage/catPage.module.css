@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.errors {
+    text-align: center;
+    color: var(--navText);
+    font-size: 22px;
+}
+.errors a {
+    text-decoration: underline;
+    color: blue;
+}

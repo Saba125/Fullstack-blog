@@ -16,7 +16,7 @@ const NavBar = () => {
   };
   const storedUser = localStorage.getItem("user");
   let userData: User | null = null;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   try {
     userData = storedUser !== null ? JSON.parse(storedUser) : null;
     console.log(userData);
@@ -25,20 +25,26 @@ const NavBar = () => {
   }
   const handleLogOut = async () => {
     try {
-      const res = await axios.post("http://localhost:8800/api/logout")
-      const user = localStorage.setItem("user", JSON.stringify(null))
-      navigate("/login")
+      const res = await axios.post("http://localhost:8800/api/logout");
+      const user = localStorage.setItem("user", JSON.stringify(null));
+      navigate("/login");
     } catch (error) {
-      console.log("Error logging out")
+      console.log("Error logging out");
     }
   };
   return (
     <div className="container">
       <div className={styles.wrapper}>
         <div className={styles.socials}>
-          <img src={Facebook} alt="tiktok" />
-          <img src={Instagram} alt="tiktok" />
-          <img src={Tiktok} alt="tiktok" />
+          <a href="https://www.facebook.com/saba.jiadze.5">
+            <img src={Facebook} alt="tiktok" />
+          </a>
+          <a href="">
+            <img src={Instagram} alt="tiktok" />
+          </a>
+          <a href="">
+            <img src={Tiktok} alt="tiktok" />
+          </a>
         </div>
         <Link to="/" className={styles.title}>
           JeBlog

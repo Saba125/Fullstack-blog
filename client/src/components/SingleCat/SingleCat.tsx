@@ -1,5 +1,4 @@
 import styles from "@/components/SingleCat/SingleCat.module.css";
-import Food from "@/assets/food.png";
 import { TCategory } from "@/types";
 import { Link } from "react-router-dom";
 interface SingleCatProps {

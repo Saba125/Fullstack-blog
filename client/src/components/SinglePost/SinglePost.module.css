@@ -1,0 +1,51 @@
+.posts {
+    display: flex;
+    gap: 20px;
+  }
+  .imgContainer {
+    flex: 1;
+    height: 350px;
+  }
+  .imgContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .textContainer {
+    flex: 1;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  .date {
+    color: var(--softTextColor);
+    font-weight: bold;
+  }
+  .category {
+      color: red;
+  }
+  .title {
+    color: var(--navText);
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .desc {
+    font-size: 17px;
+    color: var(--softTextColor);
+    font-weight: bold;
+  }
+  .button {
+    width: fit-content;
+    padding: 5px 0;
+    border: 0;
+    background-color: transparent;
+    border-radius: 0px;
+    border-bottom: 2px solid red;
+  }
+  .details {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }

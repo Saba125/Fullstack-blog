@@ -1,5 +1,4 @@
 import styles from "@/components/featured/Featured.module.css";
-import Culture from "@/assets/culture.png";
 import { useQuery } from "react-query";
 import { TBlog } from "@/types";
 const Featured = () => {
@@ -19,7 +18,7 @@ const Featured = () => {
         </h3>
         <div className={styles.content}>
           <div className={styles.imgContainer}>
-            <img src={Culture}></img>
+            <img src={firstBlog?.image}></img>
           </div>
           <div className={styles.textContainer}>
             <h3>

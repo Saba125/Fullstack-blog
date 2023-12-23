@@ -28,3 +28,11 @@ export const getAllBlog = async(req, res) => {
     res.status(404).send("Error has occurred")
   }
 }
+export const getSingleBlog = async(req, res) => {
+  try {
+    const id = req.params.id
+    const blogs = await Blog.findById(id)
+  } catch (error) {
+    res.status(404).send("Could not fetch specific blog")
+  }
+}
