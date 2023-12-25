@@ -4,11 +4,11 @@
   gap: 40px;
 }
 .errors {
-    text-align: center;
-    color: var(--navText);
-    font-size: 22px;
+  text-align: center;
+  color: var(--navText);
+  font-size: 22px;
 }
 .errors a {
-    text-decoration: underline;
-    color: blue;
+  text-decoration: underline;
+  color: blue;
 }

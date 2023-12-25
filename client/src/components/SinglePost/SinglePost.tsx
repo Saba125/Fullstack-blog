@@ -17,9 +17,11 @@ const SinglePost = ({ item }: SinglePostProps) => {
         </p>
         <div className={styles.details}>
           <h3 className={styles.title}>{item.title}</h3>
-          <p className={styles.desc}>{item.content}</p>
+          <p className={styles.desc}>{item.content.slice(0, 205)}...</p>
         </div>
-        <Link to={`/blog/${item._id}`} className={styles.button}>Read More</Link>
+        <Link to={`/blog/${item._id}`} className={styles.button}>
+          Read More
+        </Link>
       </div>
     </div>
   );

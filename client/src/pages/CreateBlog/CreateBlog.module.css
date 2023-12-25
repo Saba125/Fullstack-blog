@@ -5,7 +5,7 @@
 h1 {
   width: max-content;
   margin-bottom: 30px;
-  color:var(--navText);
+  color: var(--navText);
   font-weight: 300;
 }
 .sections {

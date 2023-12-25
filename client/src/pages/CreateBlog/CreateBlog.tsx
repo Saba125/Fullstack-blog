@@ -10,6 +10,20 @@ const CreateBlog: React.FC = () => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("Food");
   const [content, setContent] = useState("");
+  const [file, setFile] = useState<File | null>(null);
+  const upload = async (file: File) => {
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "jeblog");
+    try {
+      const res = await axios.post("https://api.cloudinary.com/v1_1/dobivcvi5/image/upload", data);
+      return res.data.secure_url; // Return the Cloudinary URL
+    } catch (error) {
+      console.error("Cloudinary error");
+      throw error; // Re-throw the error to handle it in the calling function
+    }
+  };
+  
   const storedUser = localStorage.getItem("user");
   let userData: User | null = null;
   try {
@@ -19,17 +33,26 @@ const CreateBlog: React.FC = () => {
   }
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(title, category, content);
+    let imageUrl = null;
+
+    if (file) {
+      imageUrl = await upload(file);
+      console.log("Cloudinary response", imageUrl);
+    }
+
     try {
       const res = await axios.post(
         "http://localhost:8800/api/blog",
-        { userId: userData?._id, title, content, category },
+        { userId: userData ? userData._id : null, title, content, category, image: imageUrl},
         {
           method: "POST",
           withCredentials: true,
         }
       );
-      console.log("Blog created");
+      if (file) {
+        const cloudinaryResponse = await upload(file);
+        console.log("Cloudinary response", cloudinaryResponse);
+      }
     } catch (error) {
       console.log("Error creating blog", error);
     }
@@ -47,7 +70,7 @@ const CreateBlog: React.FC = () => {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-            <label htmlFor="">Category</label>
+            <label htmlFor="">{userData?.username}</label>
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
@@ -62,7 +85,13 @@ const CreateBlog: React.FC = () => {
               <option value="Styles">Styles</option>
             </select>
             <label htmlFor="">Upload Images</label>
-            <input type="file" multiple />
+            <input
+              onChange={(e) =>
+                setFile(e.target.files ? e.target.files[0] : null)
+              }
+              type="file"
+              multiple
+            />
             <label htmlFor="">Description</label>
             <textarea
               onChange={(e) => setContent(e.target.value)}

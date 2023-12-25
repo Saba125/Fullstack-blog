@@ -15,7 +15,7 @@ const Categories = () => {
   }
   if (isLoading) {
     return (
-      <div className='loading'>
+      <div className="loading">
         <MoonLoader color="white" size={100} />
       </div>
     );
