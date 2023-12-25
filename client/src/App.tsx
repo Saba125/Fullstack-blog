@@ -13,6 +13,7 @@ import CategoryPage from "./pages/CatPage/catPage";
 import { Suspense } from "react";
 import SinglePost from "./components/SinglePost/SinglePost";
 import PostPage from "./pages/SinglePost/PostPage";
+import CreateBlog from "./pages/CreateBlog/CreateBlog";
 const queryClient = new QueryClient();
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
               element={<CategoryPage />}
             ></Route>
             <Route path="/blog/:id" element={<PostPage />} />
+            <Route path="/createblog" element={<CreateBlog  />} />
+
           </Routes>
         </Suspense>
       </QueryClientProvider>

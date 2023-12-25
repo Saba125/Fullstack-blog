@@ -1,4 +1,5 @@
 import Blog from "../models/blog.model.js";
+import User from "../models/user.model.js";
 export const createBlog = async(req, res) => {
   try {
     const newBlog = new Blog({
@@ -32,7 +33,8 @@ export const getSingleBlog = async(req, res) => {
   try {
     const id = req.params.id
     const blogs = await Blog.findById(id)
-    res.status(200).send(blogs)
+    const user = await User.findById(blogs.userId)
+    res.status(200).json({user: user, blog: blogs})
   } catch (error) {
     res.status(404).send("Could not fetch specific blog")
   }

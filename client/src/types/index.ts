@@ -13,3 +13,17 @@ export type TBlog = {
   createdAt: string;
   updatedAt: string;
 };
+export type FormData = {
+  username: string;
+  password: string;
+};
+export type TUser = {
+  _id: string;
+  username: string
+}
+export type InputFormData =  {
+  title: string;
+  category: string;
+  images: FileList | null;
+  description: string;
+}

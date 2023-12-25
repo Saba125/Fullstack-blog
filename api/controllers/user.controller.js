@@ -43,3 +43,13 @@ export const logOut = (req, res) => {
     res.status(500).send("Could not logout", error.message);
   }
 };
+export const getUser = async(req, res) => {
+  try {
+    const id = req.params.id
+    const user = await User.findById(id)
+    const {password, ...info} = user._doc
+    res.send(info)
+  } catch (error) {
+    res.status(500).send("Could not find user", error.message)
+  }
+}

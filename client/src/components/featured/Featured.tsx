@@ -28,7 +28,7 @@ const Featured = () => {
                 "            Lorem ipsum dolor sit amet consectetur adipisicing elit."}{" "}
             </h3>
             <p>
-              {firstBlog?.content ||
+              {firstBlog?.content.slice(0, 225) ||
                 " Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariaturprovident error a accusantium iure nihil quo nobis odio fuga doloremincidunt fugiat maiores ea, deserunt atque nostrum itaque, essedolor."}
             </p>
             <div className={styles.readMore}>

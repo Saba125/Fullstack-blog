@@ -14,15 +14,15 @@ const NavBar = () => {
   const toggleMenu = () => {
     setMenuVisible((prev) => !prev);
   };
-  const storedUser = localStorage.getItem("user");
-  let userData: User | null = null;
-  const navigate = useNavigate();
-  try {
-    userData = storedUser !== null ? JSON.parse(storedUser) : null;
-    console.log(userData);
-  } catch (error) {
-    console.error("Error parsing stored user data:", error);
-  }
+const storedUser = localStorage.getItem("user");
+let userData: User | null = null;
+const navigate = useNavigate();
+try {
+  userData = storedUser !== null ? JSON.parse(storedUser) : null;
+  console.log(userData);
+} catch (error) {
+  console.error("Error parsing stored user data:", error);
+}
   const handleLogOut = async () => {
     try {
       const res = await axios.post("http://localhost:8800/api/logout");
@@ -61,7 +61,7 @@ const NavBar = () => {
           <Link className={styles.link} to="/">
             View my Blogs
           </Link>
-          <Link className={styles.link} to="/">
+          <Link className={styles.link} to="/createblog">
             Create a blog
           </Link>
           <Link className={styles.link} to="/">

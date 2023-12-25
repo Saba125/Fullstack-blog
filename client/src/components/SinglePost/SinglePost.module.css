@@ -43,6 +43,7 @@
     background-color: transparent;
     border-radius: 0px;
     border-bottom: 2px solid red;
+    color: var(--navText);
   }
   .details {
     display: flex;
